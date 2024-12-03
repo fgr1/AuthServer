@@ -8,8 +8,10 @@ const prisma = new PrismaClient();
 router.post('/login', async (req: Request, res: Response): Promise<void> => {
   const { name, password } = req.body;
 
-  const user = await prisma.user.findUnique({ where: { name } });
-
+  const user = await prisma.user.findUnique({
+    where: { name: req.body.name }
+  });
+  
   if (!user) {
     res.status(401).json({ error: 'Credenciais inválidas' });
     return;
