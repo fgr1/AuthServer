@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    container_name: oscar_app_server
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgresql://citus:MySecret1@db:5432/mydb?schema=public"
+    command: sh -c "npm install && npm run dev"
+
+  db:
+    image: postgres:13
+    container_name: oscar_db
+    restart: always
+    environment:
+      POSTGRES_USER: citus
+      POSTGRES_PASSWORD: MySecret1
+      POSTGRES_DB: mydb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+  db-data:
