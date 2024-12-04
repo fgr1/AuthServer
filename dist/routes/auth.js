@@ -19,7 +19,9 @@ const router = (0, express_1.Router)();
 const prisma = new client_1.PrismaClient();
 router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, password } = req.body;
-    const user = yield prisma.user.findUnique({ where: { name } });
+    const user = yield prisma.user.findUnique({
+        where: { name: req.body.name }
+    });
     if (!user) {
         res.status(401).json({ error: 'Credenciais inválidas' });
         return;

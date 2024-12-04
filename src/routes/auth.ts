@@ -6,8 +6,9 @@ const router = Router();
 const prisma = new PrismaClient();
 
 router.post('/login', async (req: Request, res: Response): Promise<void> => {
+  console.log('Requisição de login recebida:', req.body);
+  
   const { name, password } = req.body;
-
   const user = await prisma.user.findUnique({
     where: { name: req.body.name }
   });
@@ -39,7 +40,7 @@ router.post('/login', async (req: Request, res: Response): Promise<void> => {
     });
   }
 
-  res.json({ message: 'Autenticado com sucesso', token: tokenValue });
+  res.json({ message: 'Autenticado com sucesso', token: tokenValue, userId: user.id });
 });
 
 export default router;

@@ -19,11 +19,11 @@ interface Diretor {
 
 async function main() {
   const usersData = [
-    { name: 'user1', password: 'password1' },
-    { name: 'user2', password: 'password2' },
-    { name: 'user3', password: 'password3' },
-    { name: 'user4', password: 'password4' },
-    { name: 'user5', password: 'password5' },
+    { name: 'user1', password: 'senha1' },
+    { name: 'user2', password: 'senha2' },
+    { name: 'user3', password: 'senha3' },
+    { name: 'user4', password: 'senha4' },
+    { name: 'user5', password: 'senha5' },
   ];
 
   for (const userData of usersData) {

@@ -15,6 +15,6 @@ app.use('/vote', vote_1.default);
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });
-app.get('/test', (req, res) => {
-    res.send('Server is running');
+app.get('/', (req, res) => {
+    res.send('Bem-vindo ao servidor!');
 });
