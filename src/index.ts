@@ -11,7 +11,7 @@ app.use(cors());
 app.use('/auth', authRoutes);
 app.use('/vote', voteRoutes);
 
-app.listen(3000, () => {
+app.listen(3000, '0.0.0.0', () => {
   console.log('Servidor rodando na porta 3000');
 });
 
